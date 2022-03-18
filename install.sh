@@ -9,9 +9,9 @@ WEB_SERVER_DIR=/var/www/html
 
 # Installation
 echo "[+] Installing xterm"
-apt -qq install -y xterm
+apt install -y xterm
 echo -e "\n[+] Installing bettercap"
-apt -qq install -y bettercap
+apt install -y bettercap
 echo
   
 # Setup Apache2 rewrite engine mod
