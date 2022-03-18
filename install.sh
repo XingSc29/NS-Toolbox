@@ -10,9 +10,9 @@ WEB_SERVER_DIR=/var/www/html
 # Installation
 echo "[+] Installing xterm"
 apt -qq install -y xterm
-echo -e "\n\n[+] Installing bettercap"
+echo -e "\n[+] Installing bettercap"
 apt -qq install -y bettercap
-echo -e "\n"
+echo
   
 # Setup Apache2 rewrite engine mod
 if test -d "$APACHE2_DIR" && test -d "$WEB_SERVER_DIR"; then
