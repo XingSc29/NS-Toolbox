@@ -40,9 +40,6 @@ else
   exit 1
 fi
 
-# Move this folder to /opt/NS-Toolbox
-mv "../NS-Toolbox" "/opt"
-
 # Setup Handshake directory for WPA/WPA2 Handshake Snooper
 if test -d "$HANDSHAKE_DIR"; then
   echo -n "$HANDSHAKE_DIR exists. Delete and recreate a new one? [y/n]: "
@@ -53,6 +50,7 @@ if test -d "$HANDSHAKE_DIR"; then
     mkdir "$HANDSHAKE_DIR"
   fi
 else
-  echo "$HANDSHAKE_DIR created."
+  mkdir "/opt/NS-Toolbox"
   mkdir "$HANDSHAKE_DIR"
+  echo "$HANDSHAKE_DIR created."
 fi
