@@ -8,8 +8,10 @@ WEB_SERVER_DIR=/var/www/html
 # Install Python libraries (stored in requirements.txt)
 
 # Installation
-apt install -y xterm
-apt install -y bettercap
+echo "Installing xterm\n\n"
+apt -qq install -y xterm
+echo "Installing bettercap\n\n"
+apt -qq install -y bettercap
   
 # Setup Apache2 rewrite engine mod
 if test -d "$APACHE2_DIR" && test -d "$WEB_SERVER_DIR"; then
@@ -24,6 +26,7 @@ if test -d "$BETTERCAP_DIR"; then
   read -n 1 ans
   if [[ $ans == "y" ]]; then
     # install bettercap custom scripts and replace the original one here
+    echo "Installing custom scripts..." 
     git clone https://github.com/XingSc29/hstshijack.git
     rm -r "$BETTERCAP_DIR/caplets/hstshijack"
     mv "hstshijack" "$BETTERCAP_DIR/caplets/"
@@ -37,7 +40,7 @@ else
 fi
 
 # Move this folder to /opt/NS-Toolbox
-mv -r "../NS-Toolbox" "/opt"
+mv "../NS-Toolbox" "/opt"
 
 # Setup Handshake directory for WPA/WPA2 Handshake Snooper
 if test -d "$HANDSHAKE_DIR"; then
