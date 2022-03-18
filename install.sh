@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BETTERCAP_DIR=/usr/share/bettercap
-HANDSHAKE_DIR=/opt/NS-Handshake
+HANDSHAKE_DIR=/opt/NS-handshake
 APACHE2_DIR=/etc/apache2
 WEB_SERVER_DIR=/var/www/html
 
@@ -54,3 +54,9 @@ else
   mkdir "$HANDSHAKE_DIR"
   echo -e "\n[+] $HANDSHAKE_DIR created."
 fi
+
+# Install python libraries and dependencies
+echo "[+] Installing dependencies"
+apt-get install -y build-essential python-dev-is-python3 libnetfilter-queue-dev
+apt install -y pip3
+echo "[+] Completed, please run: pip3 install -r requirements.txt, in the project folder"
