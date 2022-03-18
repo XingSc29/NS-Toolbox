@@ -56,7 +56,7 @@ else
 fi
 
 # Install python libraries and dependencies
-echo "[+] Installing dependencies"
+echo -e "\n[+] Installing dependencies"
 apt-get install -y build-essential python-dev-is-python3 libnetfilter-queue-dev
-apt install -y pip3
+apt install -y python3-pip
 echo "[+] Completed, please run: pip3 install -r requirements.txt, in the project folder"
