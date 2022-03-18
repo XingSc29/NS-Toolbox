@@ -26,7 +26,7 @@ if test -d "$BETTERCAP_DIR"; then
     # install bettercap custom scripts and replace the original one here
     git clone https://github.com/XingSc29/hstshijack.git
     rm -r "$BETTERCAP_DIR/caplets/hstshijack"
-    mv hstshijack "$BETTERCAP_DIR/caplets/"
+    mv "hstshijack" "$BETTERCAP_DIR/caplets/"
     echo -e "\nCustomized scripts are installed."
   else
     echo -e "\nCustomized scripts are not installed, the sslstrip function in NS-Toolbox may not work correctly!"
@@ -35,6 +35,9 @@ else
   echo "$BETTERCAP_DIR doesn't exist. Unable to continue, exiting..."
   exit 1
 fi
+
+# Move this folder to /opt/NS-Toolbox
+mv -r "../NS-Toolbox" "/opt"
 
 # Setup Handshake directory for WPA/WPA2 Handshake Snooper
 if test -d "$HANDSHAKE_DIR"; then
