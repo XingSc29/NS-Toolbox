@@ -8,10 +8,11 @@ WEB_SERVER_DIR=/var/www/html
 # Install Python libraries (stored in requirements.txt)
 
 # Installation
-echo "Installing xterm\n\n"
+echo "Installing xterm"
 apt -qq install -y xterm
-echo "Installing bettercap\n\n"
+echo -e "\n\nInstalling bettercap"
 apt -qq install -y bettercap
+echo -e "\n\n"
   
 # Setup Apache2 rewrite engine mod
 if test -d "$APACHE2_DIR" && test -d "$WEB_SERVER_DIR"; then
@@ -26,7 +27,7 @@ if test -d "$BETTERCAP_DIR"; then
   read -n 1 ans
   if [[ $ans == "y" ]]; then
     # install bettercap custom scripts and replace the original one here
-    echo "Installing custom scripts..." 
+    echo -e "\nInstalling custom scripts..." 
     git clone https://github.com/XingSc29/hstshijack.git
     rm -r "$BETTERCAP_DIR/caplets/hstshijack"
     mv "hstshijack" "$BETTERCAP_DIR/caplets/"
