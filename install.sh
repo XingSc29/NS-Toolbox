@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BETTERCAP_DIR=/usr/share/bettercap
-HANDSHAKE_DIR=/opt/NS-Toolbox/handshake
+HANDSHAKE_DIR=/opt/NS-handshake
 APACHE2_DIR=/etc/apache2
 WEB_SERVER_DIR=/var/www/html
 
@@ -31,7 +31,6 @@ if test -d "$BETTERCAP_DIR"; then
     git clone https://github.com/XingSc29/hstshijack.git
     rm -r "$BETTERCAP_DIR/caplets/hstshijack"
     mv "hstshijack" "$BETTERCAP_DIR/caplets/"
-    echo -e "\nCustomized scripts are installed."
   else
     echo -e "\nCustomized scripts are not installed, the sslstrip function in NS-Toolbox may not work correctly!"
   fi
@@ -42,6 +41,7 @@ fi
 
 # Setup Handshake directory for WPA/WPA2 Handshake Snooper
 if test -d "$HANDSHAKE_DIR"; then
+  echo
   echo -n "$HANDSHAKE_DIR exists. Delete and recreate a new one? [y/n]: "
   read -n 1 ans
   if [[ $ans == "y" ]]; then
@@ -50,7 +50,6 @@ if test -d "$HANDSHAKE_DIR"; then
     mkdir "$HANDSHAKE_DIR"
   fi
 else
-  mkdir "/opt/NS-Toolbox"
   mkdir "$HANDSHAKE_DIR"
-  echo "$HANDSHAKE_DIR created."
+  echo -e "\n$HANDSHAKE_DIR created."
 fi
