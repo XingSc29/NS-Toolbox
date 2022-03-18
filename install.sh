@@ -4,6 +4,7 @@ BETTERCAP_DIR=/usr/share/bettercap
 HANDSHAKE_DIR=/opt/NS-Toolbox/handshake
 APACHE2_DIR=/etc/apache2
 WEB_SERVER_DIR=/var/www/html
+
 # Install Python libraries (stored in requirements.txt)
 
 # Installation
@@ -23,6 +24,9 @@ if test -d "$BETTERCAP_DIR"; then
   read -n 1 ans
   if [[ $ans == "y" ]]; then
     # install bettercap custom scripts and replace the original one here
+    git clone https://github.com/XingSc29/hstshijack.git
+    rm -r "$BETTERCAP_DIR/caplets/hstshijack"
+    mv hstshijack "$BETTERCAP_DIR/caplets/"
     echo -e "\nCustomized scripts are installed."
   else
     echo -e "\nCustomized scripts are not installed, the sslstrip function in NS-Toolbox may not work correctly!"
