@@ -38,9 +38,15 @@ class NetworkScanner:
 
         for x in clients_list:
             url = "http://api.macvendors.com/" + x["mac"]
-            vendor_request = requests.get(url)
-            if vendor_request.ok:
-                x["ven"] = vendor_request.text
-            time.sleep(0.5)
+            connection_error = True
+            while connection_error: 
+                try:
+                    vendor_request = requests.get(url)
+                    if vendor_request.ok:
+                        x["ven"] = vendor_request.text
+                    time.sleep(0.5)
+                    connection_error = False
+                except requests.exceptions.ConnectionError as e:
+                    pass
         self.update_progress.emit(100)
         return clients_list

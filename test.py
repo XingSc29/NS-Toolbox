@@ -1269,13 +1269,13 @@ class HandshakeSnoopWorker(QtCore.QObject):
 
     def run(self):
         self.progress.emit("[+] Initializing Handshake Snooper....")
-        self.progress.emit("[!] Handshake file will be stored in /opt/project/handshake/ directory")
+        self.progress.emit("[!] Handshake file will be stored in /opt/NS-Handshake/ directory")
 
         if self.attack_mode == "Passive":
             self.snooper_process = subprocess.Popen(
                 f'xterm -hold -T "Handshake Snooper" -geometry 120x40+0+0 -fa "Monospace" -fs 10 '
                 f'-sb -rightbar -e airodump-ng --bssid {self.target_ap_bssid} --channel {self.channel} '
-                f'--write /opt/handshake/{self.file_name} {self.interface}',
+                f'--write /opt/NS-Handshake/{self.file_name} {self.interface}',
                 shell=True, preexec_fn=os.setsid)
             self.progress.emit("[!] Please stop the attack manually when the handshake is captured")
 
@@ -1283,7 +1283,7 @@ class HandshakeSnoopWorker(QtCore.QObject):
             self.snooper_process = subprocess.Popen(
                 f'xterm -hold -T "Handshake Snooper" -geometry 120x40+0+0 -fa "Monospace" -fs 10 '
                 f'-sb -rightbar -e airodump-ng --bssid {self.target_ap_bssid} --channel {self.channel} '
-                f'--write /opt/handshake/{self.file_name} {self.interface}',
+                f'--write /NS-Handshake/{self.file_name} {self.interface}',
                 shell=True, preexec_fn=os.setsid)
             self.progress.emit("[!] Please stop the attack manually when the handshake is captured")
             self.progress.emit("[+] Aggressive mode enabled, initializing deauth attack\n")

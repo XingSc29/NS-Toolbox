@@ -33,7 +33,10 @@ dhcp_discover = Ether(dst='ff:ff:ff:ff:ff:ff', src=RandMAC()) \
 count = 1
 while True:
     # sendp(dhcp_discover, iface=interface, loop=1, verbose=1, inter=0.01)
-    sendp(dhcp_discover, iface=interface, verbose=0)
-    print_to_stderr(f"[+] DHCP discover packet {count} sent")
-    count += 1
-    time.sleep(0.01)
+    try:
+        sendp(dhcp_discover, iface=interface, verbose=0)
+        print_to_stderr(f"[+] DHCP discover packet {count} sent")
+        count += 1
+        time.sleep(0.01)
+    except OSError as e:
+        print_to_stderr(f"[-] {e}")
