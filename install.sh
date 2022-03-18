@@ -12,7 +12,7 @@ echo "Installing xterm"
 apt -qq install -y xterm
 echo -e "\n\nInstalling bettercap"
 apt -qq install -y bettercap
-echo -e "\n\n"
+echo -e "\n"
   
 # Setup Apache2 rewrite engine mod
 if test -d "$APACHE2_DIR" && test -d "$WEB_SERVER_DIR"; then
