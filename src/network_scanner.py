@@ -27,14 +27,20 @@ class NetworkScanner:
         clients_list = []
 
         for i in range(self.count):
-            answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False, iface=self.interface)[0]
-            print(f"\r[+] {self.count - 1 - i} scan left", end="")
-            # Update scan progress bar
-            self.update_progress.emit((i + 1) / self.count * 100 - i * 4)
-            for element in answered_list:
-                client_dict = {"ip": element[1].psrc, "mac": element[1].hwsrc, "ven": "Unknown"}
-                if client_dict not in clients_list:
-                    clients_list.append(client_dict)
+            os_error = True
+            while os_error:
+                try:
+                    answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False, iface=self.interface)[0]
+                    print(f"\r[+] {self.count - 1 - i} scan left", end="")
+                    # Update scan progress bar
+                    self.update_progress.emit((i + 1) / self.count * 100 - i * 4)
+                    for element in answered_list:
+                        client_dict = {"ip": element[1].psrc, "mac": element[1].hwsrc, "ven": "Unknown"}
+                        if client_dict not in clients_list:
+                            clients_list.append(client_dict)
+                    os_error = False
+                except OSError as e:
+                    pass
 
         for x in clients_list:
             url = "http://api.macvendors.com/" + x["mac"]
