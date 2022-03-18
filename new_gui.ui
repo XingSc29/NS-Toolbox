@@ -1207,7 +1207,7 @@ p, li { white-space: pre-wrap; }
                        </font>
                       </property>
                       <property name="text">
-                       <string>Victim(s) (separated by columns):</string>
+                       <string>Victim(s) (separated by commas):</string>
                       </property>
                      </widget>
                     </item>
@@ -1860,7 +1860,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="PortScannerTab">
            <attribute name="title">
@@ -2551,7 +2551,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="PasswordSnifferTab">
            <attribute name="title">
@@ -3733,7 +3733,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="DeviceMonitorTab">
            <attribute name="title">
@@ -5800,8 +5800,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;[!] Captive Portal will modify files such as /var/www/html/index.html and /etc/apache2/sites-enabled/000-default.conf. Please backup your original files if you need them.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;[!] Please disable NetworkManager and enable monitor mode again for Captive Portal.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;[!] Please manually enable monitor mode after each attack for a more stable result because NetworkManager might restore your wireless adapter to Managed mode.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                  </widget>

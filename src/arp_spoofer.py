@@ -21,7 +21,13 @@ class ARPSpoofer:
         broadcast = scapy.Ether(dst="FF:FF:FF:FF:FF:FF:FF")
         arp_request_broadcast = broadcast / arp_request
 
-        answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0]
+        os_error = True
+        while os_error:
+            try:
+                answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0]
+                os_error = False
+            except OSError as e:
+                self.progress.emit(f"[-] {e}")
 
         return answered_list[0][1].hwsrc
 
@@ -44,6 +50,8 @@ class ARPSpoofer:
             except IndexError:
                 self.progress.emit("[-] Failed to obtain target's MAC address, it might be caused by target not "
                                    "responding to ARP Request, retrying...")
+            except OSError as e:
+                self.progress.emit("[-] {e}")
         while self.stop == 0:
             for victim_ip in self.victim_ips:
                 try:

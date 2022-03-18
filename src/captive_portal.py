@@ -26,8 +26,8 @@ class CaptivePortal:
 
     def init_dnsmasq(self):
         if self.login_page == "TM Unifi Login":
-            login_page_name = "tmlogin.html"
             shutil.copyfile("src/captive_portal/tmlogin.html", "/var/www/html/index.html")
+            shutil.copytree("src/captive_portal/tm_login_page", "/var/www/html/tm_login_page")
 
         configurations = [
             f"interface={self.wireless_interface} \n",
