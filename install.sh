@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BETTERCAP_DIR=/usr/share/bettercap
-HANDSHAKE_DIR=/opt/NS-handshake
+HANDSHAKE_DIR=/opt/NS-Handshake
 APACHE2_DIR=/etc/apache2
 WEB_SERVER_DIR=/var/www/html
 
