@@ -12,6 +12,8 @@ echo "[+] Installing xterm"
 apt install -y xterm
 echo -e "\n[+] Installing bettercap"
 apt install -y bettercap
+echo -e "\n[+] Installing hostapd"
+apt install -y hostapd
 echo
   
 # Setup Apache2 rewrite engine mod
