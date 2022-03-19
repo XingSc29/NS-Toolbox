@@ -1,6 +1,6 @@
 aiohttp
 NetfilterQueue
-python3-nmap
+python-nmap
 prettytable
 PyQt6
 PyYAML
