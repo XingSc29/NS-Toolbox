@@ -899,7 +899,7 @@ QDateEdit::drop-down
        </font>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Layer2Tab">
        <attribute name="title">
@@ -915,7 +915,7 @@ QDateEdit::drop-down
            </font>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="NetworkScannerTab">
            <attribute name="title">
@@ -1859,7 +1859,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="PortScannerTab">
            <attribute name="title">
@@ -2550,7 +2550,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="PasswordSnifferTab">
            <attribute name="title">
@@ -3732,7 +3732,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="DeviceMonitorTab">
            <attribute name="title">
