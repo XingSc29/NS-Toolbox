@@ -428,7 +428,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     # Password sniffer update progress
     def report_password_sniff_progress(self, progress_text):
-        self.password_sniff_log.append(progress_text)
+        if "[+] Possible username/password" in progress_text:
+            self.password_sniff_log.append(f"<font color=yellow>{progress_text}</font>")
+        else:
+            self.password_sniff_log.append(f"<font color=white>{progress_text}</font>")
 
     # Password sniffer show spoof result
     def report_password_sniff_log(self):

