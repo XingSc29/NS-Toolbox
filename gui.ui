@@ -1089,6 +1089,9 @@ p, li { white-space: pre-wrap; }
                         <height>100</height>
                        </size>
                       </property>
+                      <property name="minimum">
+                       <number>1</number>
+                      </property>
                       <property name="maximum">
                        <number>20</number>
                       </property>
@@ -3735,7 +3738,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="DeviceMonitorTab">
            <attribute name="title">
