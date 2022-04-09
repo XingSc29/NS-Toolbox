@@ -899,7 +899,7 @@ QDateEdit::drop-down
        </font>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Layer2Tab">
        <attribute name="title">
@@ -1077,7 +1077,7 @@ p, li { white-space: pre-wrap; }
                        </font>
                       </property>
                       <property name="text">
-                       <string>Scan Count: 1</string>
+                       <string>Scan Count: 01</string>
                       </property>
                      </widget>
                     </item>
@@ -1088,6 +1088,9 @@ p, li { white-space: pre-wrap; }
                         <width>350</width>
                         <height>100</height>
                        </size>
+                      </property>
+                      <property name="maximum">
+                       <number>20</number>
                       </property>
                       <property name="value">
                        <number>1</number>
