@@ -1,5 +1,5 @@
 # NS-Toolbox
-A Python GUI-based network hacking tool developed by a student. It is still under development.
+A GUI-based network hacking tool developed by a student. It is still under development.
 ## Modules
 | Layer 2                  | TCP/IP       | DNS          | HTTP              | WiFi                          |
 | :----------------------: | :----------: | :----------: | :---------------: | :---------------------------: |
