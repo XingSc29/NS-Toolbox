@@ -165,7 +165,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
     # Network scanner show scan results
     def show_scan_results(self, results):
         # Append scan result to textBrowser
-        scan_results_table = PrettyTable(["IP", "MAC Address", "Vendor"])
+        scan_results_table = PrettyTable(["        IP Address        ", "        MAC Address        ", "            Vendor            "])
         for result in results:
             ip_address = result["ip"]
             mac_address = result["mac"]

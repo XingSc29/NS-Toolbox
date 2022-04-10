@@ -12,7 +12,10 @@ class PasswordSniffer:
         self.interface = interface
 
     def get_url(self, packet):
-        return packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
+        try:
+            return packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
+        except TypeError as e:
+            return e
 
     # Find keywords in the packet load, if keywords exist, consider it as login info
     def get_login_info(self, packet):
