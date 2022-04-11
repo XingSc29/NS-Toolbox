@@ -11,3 +11,5 @@ A GUI-based network hacking tool developed by a student. It is still not ready f
 ## PyQt Error Messages
 You might find some error messages in your terminal while performing actions on the GUI.   
 Those are some known bugs of Qt, you do not need to worry about them if the program works fine.
+## Terminal Properties
+Press [Ctrl] + [left/right mouse button] to change the properties of the terminals.

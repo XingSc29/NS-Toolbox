@@ -39,14 +39,14 @@ fi
 # Setup Handshake directory for WPA/WPA2 Handshake Snooper
 if test -d "$HANDSHAKE_DIR"; then
   echo
-  echo -n "[+] $HANDSHAKE_DIR exists. Delete and recreate a new one? [y/n]: "
+  echo -n "[+] $HANDSHAKE_DIR exists. Delete and recreate a new one? (Please backup $HANDSHAKE_DIR first if needed!) [y/n]: "
   read -n 1 ans
   if [[ $ans == "y" ]]; then
     rm -r "$HANDSHAKE_DIR"
     echo -e "\n[+] $HANDSHAKE_DIR created."
     mkdir "$HANDSHAKE_DIR"
   else
-    echo
+    echo 
   fi
 else
   mkdir "$HANDSHAKE_DIR"
@@ -57,4 +57,4 @@ fi
 echo -e "\n[+] Installing dependencies"
 apt-get install -y build-essential python-dev-is-python3 libnetfilter-queue-dev
 apt install -y python3-pip
-echo "[+] Completed, please run: pip3 install -r requirements.txt, in the project folder"
+echo -e "\n[+] Completed, please run: pip3 install -r requirements.txt"
