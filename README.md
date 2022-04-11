@@ -8,3 +8,6 @@ A GUI-based network hacking tool developed by a student. It is still not ready f
 | MAC Spoofer              |              |              | Code Injector     | Deauther                      |
 | DHCP Starvation          |              |              | Web Crawler       | WPA/WPA2 Cracking             |
 |                          |              |              |                   | Evil Twin Attack (Fake access point & Captive portal) |
+## PyQt Error Messages
+You might find some error messages in your terminal while performing actions on the GUI.   
+Those are some known bug of Qt, you do not need to worry about them if the program works fine.
