@@ -96,6 +96,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.password_sniff_clear_button.clicked.connect(self.password_sniff_clear_button_clicked)
         self.download_replace_button.clicked.connect(self.download_replace_button_clicked)
         self.code_inject_button.clicked.connect(self.code_inject_button_clicked)
+        self.crawler_browse_wordlist.clicked.connect(self.crawler_browse_wordlist_clicked)
         self.crawler_start_button.clicked.connect(self.crawler_start_button_clicked)
         self.crawler_clear_button.clicked.connect(self.crawler_clear_button_clicked)
         # WiFi
@@ -103,6 +104,8 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.handshake_snooper_button.clicked.connect(self.handshake_snooper_button_clicked)
         self.wifi_dos_button.clicked.connect(self.wifi_dos_button_clicked)
         self.wpa2_cracker_button.clicked.connect(self.wpa2_cracker_button_clicked)
+        self.wpa2_cracker_browse_wordlist.clicked.connect(self.wpa2_cracker_browse_wordlist_clicked)
+        self.wpa2_cracker_browse_handshake.clicked.connect(self.wpa2_cracker_browse_handshake_clicked)
         self.evil_twin_button.clicked.connect(self.evil_twin_button_clicked)
         self.evil_twin_clear_log.clicked.connect(self.evil_twin_clear_log_clicked)
         # Settings
@@ -666,6 +669,12 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.sslstrip_button.setEnabled(True)
         self.sslstrip_button.setText("Start")
 
+    def crawler_browse_wordlist_clicked(self):
+        fname = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "", "All Files (*)")
+        if fname:
+            self.crawler_wordlist_path.setText(fname[0])
+
+
     def crawler_start_button_clicked(self):
         attack_mode = self.crawler_attack_mode.currentText()
         if not self.crawler_url.text():
@@ -857,11 +866,23 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.wifi_dos_button.setEnabled(True)
         self.wifi_dos_button.setText("Start")
 
+    def wpa2_cracker_browse_wordlist_clicked(self):
+        fname = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "", "All Files (*)")
+        if fname:
+            self.wpa2_cracker_wordlist.setText(fname[0])
+    
+    def wpa2_cracker_browse_handshake_clicked(self):
+        fname = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "", "All Files (*)")
+        if fname:
+            self.wpa2_cracker_handshake.setText(fname[0])
+
     def wpa2_cracker_button_clicked(self):
         if self.wpa2_cracker_status == 0:
             # Get user input
             wordlist = self.wpa2_cracker_wordlist.text().replace(" ", "")
             handshake = self.wpa2_cracker_handshake.text().replace(" ", "") 
+            print(f"cracker button clicked: {wordlist}, {handshake}")
+
             tool = self.wpa2_cracker_tool.currentText()
             # Update GUI
             self.wpa2_cracker_button.setText("Stop")
