@@ -1,7 +1,7 @@
 # NS-Toolbox
 A GUI-based network hacking tool developed by a student. It is still not ready for deployment.
 ## Installation
-Run these with root privilege:
+Run these with root privilege:  
 ./installation  
 python3 -r requirement.txt
 ## Modules
