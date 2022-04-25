@@ -2,7 +2,7 @@
 A GUI-based network hacking tool developed by a student. It is still not ready for deployment.
 ## Installation
 Run these with root privilege:
-./installation
+./installation  
 python3 -r requirement.txt
 ## Modules
 | Layer 2                  | TCP/IP       | DNS          | HTTP              | WiFi                          |
