@@ -3,7 +3,7 @@ A GUI-based network hacking tool developed by a student. It is still not ready f
 ## Installation
 Run these with root privilege:  
 ./installation  
-python3 -r requirement.txt
+pip3 install -r requirement.txt
 ## Modules
 | Layer 2                  | TCP/IP       | DNS          | HTTP              | WiFi                          |
 | :----------------------: | :----------: | :----------: | :---------------: | :---------------------------: |
