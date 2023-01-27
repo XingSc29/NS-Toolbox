@@ -8,7 +8,7 @@ Many modules such as network scanner, ARP spoofer and MAC spoofer do not meet th
 
 Run these with root privilege:  
 ```
-./installation  
+./install.sh 
 pip3 install -r requirement.txt
 ```
 
