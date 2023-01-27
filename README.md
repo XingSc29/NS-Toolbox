@@ -1,6 +1,8 @@
 # NS-Toolbox
 
-A GUI-based network hacking tool developed by a student. Many modules such as network scanner, ARP spoofer and MAC spoofer do not meet the standard. For example, I did not implement Nmap for the network scanner. Instead of using Nmap, I used the Python scapy library to create these modules. This is because the entire project is for my own educational purpose only.
+A GUI-based network hacking tool developed by a student. 
+
+Many modules such as network scanner, ARP spoofer and MAC spoofer do not meet the standard. For example, I did not implement Nmap for the network scanner. Instead of using Nmap, I used the Python scapy library to create these modules. This is because the entire project is for my own educational purpose only.
 
 ## Installation
 
